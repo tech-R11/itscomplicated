@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Solution{
+  public:
+    vector<int> twosum(vector<int>&sum , int target){
+        unordered_map<int,int> sum;
+        for(int i=0;i<nums.size();i++){
+            if(sum[nums[i]]){
+              pair<int,int>  temp;
+              temp.first = i ;
+              temp.second = sum[nums[i]]-1; 
+                }
+            sum[target-nums[i]]=i+1;      
+            }
+      }
+};
+
+
+in line 8 ,we should have used sum.find(nums[i]) because it takes logrithmic time..
+
