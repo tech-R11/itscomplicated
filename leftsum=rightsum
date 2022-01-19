@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> visited;
+        int pre = 0;
+        for(int i = 0;i<n;i++){
+            visited.push_back(pre);
+            pre+=nums[i];
+        }
+        for(int mid=0;mid<n;mid++)
+            {  
+                    if(find_sum(nums,0,mid,n,visited))return mid;
+            }    
+        return -1;
+    }
+    
+    bool find_sum(vector<int>&nums,int start,int mid,int end,vector<int>&visited){
+        int sum1=0,sum2=0;
+        int i=0,j=0;
+        sum1=visited[mid];
+        if(mid==end-1){
+            sum2 = 0;
+        }
+        else 
+        sum2=visited[end-1]-visited[mid+1]+nums[end-1];
+        if(sum1==sum2)return true;
+        return false;
+        }
+    };
