@@ -28,3 +28,25 @@ public:
         return false;
         }
     };
+
+ a little better :-no extra memory
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> visited;
+        int pre = 0;
+        for(int i=0;i<n;i++){
+            pre=pre+nums[i];
+        }
+        int updating_answer=0;
+        for(int i=0;i<n;i++){
+            pre=pre-nums[i];
+            if(pre==updating_answer)return i;
+            updating_answer=updating_answer+nums[i];    
+        }
+        return -1;
+    }
+    
+   
+    };
