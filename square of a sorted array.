@@ -1,0 +1,26 @@
+
+SC:- O(n)
+TC:- O(n)
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        int i=0;
+        vector<int > answer;
+        while( i<n&&nums[i]<0)i++;
+        int right = i;
+        int left = i-1;
+        while(right<n || left>=0){
+            if(right==n){answer.push_back(nums[left]*nums[left]);left--;}
+            else if(left==-1){answer.push_back(nums[right]*nums[right]);right++;}
+            else if(-nums[left]<nums[right]){
+                answer.push_back(nums[left]*nums[left]);
+                left--;
+            }
+            else{
+                answer.push_back(nums[right]*nums[right]);
+                right++;
+            }
+        }return answer;
+        }
+};
