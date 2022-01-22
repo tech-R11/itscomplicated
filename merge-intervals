@@ -1,0 +1,6 @@
+given intervals->
+sort them..
+insert first interval
+then iterate over all the other interval
+check if start of new interval ->less than end of previous interval->push max(end of new interval,end of prev. interval) to prev intervals end value;
+                               ->greater than end of prev. interval->push the new interval to the answer vector;
