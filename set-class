@@ -1,0 +1,38 @@
+using hashmap()->insertion O(1);
+               ->deletion O(1);
+               ->search   O(1);
+               
+               
+class RandomizedSet {
+private:
+    unordered_map<int,int> value_index;         //hashmap for storing value-index pair
+    vector<int> st;
+    int size=0;
+public:
+    RandomizedSet(){}
+    
+    bool insert(int val){
+        if(value_index.count(val))return false;
+        value_index[val]=size; 
+        st.push_back(val);
+        size++;
+        return true;
+        }
+    
+    bool remove(int val) {
+    //if value is found then swapping it with last element and then removing it or much better replaceing it with last element and then deleting last element
+    // and removing it from hashmap and also changing the last elements index.      
+        if(!value_index.count(val))return false;
+        value_index[st.back()] = value_index[val];
+        swap(st[value_index[val]] , st[size-1]);
+        value_index.erase(val);
+        st.pop_back();
+        size--;
+        return true;
+    }
+    
+    int getRandom() {
+        return st[rand()%size];
+        rand() method returns a a rondom number from 0 to RAND_MAX(32767)-1;
+    }
+};
