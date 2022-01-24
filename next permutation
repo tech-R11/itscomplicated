@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+class solution{
+public:
+    solution(){}
+    vector<int>& nerxt_permutation(vector<int>& nums){
+        int n = num.size();
+        int i=n-2;
+       while(i>=0 && nums[i]>=nums[i+1]){
+       i--;
+       }
+       if(i==-1)return sort(nums.begin(),nums.end());
+       int k;
+       for(int j=i+1;j<n;j++){
+          if(nums[j]>nums[i])k = j;
+       }
+       swap(nums[i],nums[k]);
+       sort(nums.begin()+i+1,nums.end());
+       return nums;
+    }
+};
+
+
+int main(){
+
+}
