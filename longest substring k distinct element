@@ -1,0 +1,57 @@
+O(n) approch:-
+before that :- multiply two integer given in string...
+
+#include<bits/stdc++.h>
+string add_string(string a,string b){
+    int len_a = a.length(),len_b = b.length(),carry=0;
+    string answer;
+    if(len_b>len_a){swap(a,b);
+   					 swap(len_a,len_b);}
+    reverse(a.begin(),a.end());
+    reverse(b.begin(),b.end());
+    int i;
+    for(i=0;i<len_b;i++){
+        int temp_sum=a[i]-'0'+b[i]-'0';
+        if(carry){temp_sum+=1;carry=0;}
+        if(temp_sum>9){carry=1;temp_sum%=10;}
+        answer=to_string(temp_sum)+answer;
+    }
+    while(i!=len_a){
+        int t=a[i]-'0';
+        answer=to_string((t+carry)%10)+answer;
+        carry=(t+carry)/10;
+        i++;
+    }
+    if(carry)answer='1'+answer;
+    return answer;
+}
+string multiplyStrings(string a , string b ){
+
+    string answer;
+    long long sum=0,product=1,carry=0,base=1;
+    reverse(a.begin(),a.end());
+    reverse(b.begin(),b.end());
+    for(int i=0;i<a.length();i++){
+        int val=a[i]-'0';
+        carry=0;
+        string temp;
+        for(int j=0;j<b.length();j++){
+        	    product=(b[i]-'0')*val+carry;
+            	carry=product/10;
+            	product%=10;
+            	temp=to_string(product)+temp;
+        }if(carry){
+            temp=to_string(carry)+temp;
+        }
+        int c=base;
+        while(c!=1){
+            temp.push_back('0');
+            c/=10;
+        }
+        answer=add_string(answer,temp);
+        base*=10;
+    	}
+	return answer;
+}
+
+O()
