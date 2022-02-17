@@ -1,0 +1,15 @@
+two pointer approch
+sliding window
+both are quiet similar 
+generally they are used in array/string questions in which you take two pointers pointing to some position of that collection and than solving it accordingly.
+this approch is used generally to reduce the time complexcity of code generally O(n).
+for ex:-target sum..in sorted array
+        three sum
+        four sum
+        longest mountain subarray
+          ->start pointer and a movable pointer(first increasing then decreasing)(j-i+1)
+        container with most water  
+        remove consecutive duplicates from string
+        is subsequence
+          ->map<char,int> mp (string1)
+          ->iterate over string 2;
