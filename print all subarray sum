@@ -1,0 +1,27 @@
+given 2d array
+brute force approch:-O((n-k)*(n-k)*k*k)=>O(n^2k^2)
+efficient approch:-O(n^2)->needs preprocessing
+
+store all strip sum->i.e store column elements sum in another array
+int r,c,k;
+for(int j=0;j<c;j++){
+  int sum=0;
+  for(int i=0;i<k;i++)
+      sum+=arr[i][j];
+  matrix[0][j]=sum;
+  for(int i=1;i<n-k+1;i++){
+      sum+=arr[k+i-1][j]-arr[i-1][j];
+      matrix[i][j]=sum;
+      }
+ }     
+ 
+ for(int i=0;i<n-k;i++){
+    for(int j=0;j<n-k;j++){
+        int sum=0;
+        for(int t=j;t<j+k;t++){
+            sum+=matrix[i][t];
+          }
+          answer.push_back(sum);
+    }
+ }
+ return answer;
